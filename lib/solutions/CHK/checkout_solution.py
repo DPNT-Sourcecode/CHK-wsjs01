@@ -2,6 +2,11 @@ from collections import Counter
 
 # noinspection PyUnusedLocal
 # skus = unicode string
+def deal(original_price, multiplier, deal_price):
+    return list_costs
+def superdeal(original_price, deal_mult, deal_price, super_mult, super_price):
+    return list_costs
+
 def checkout(skus):
     dict_prices = {"A":50, "B":30, "C":20, "D":15, "E":40, "F":10,
                    "G":20, "H":10, "I":35, "J":60, "K":80, "L":90,
@@ -10,7 +15,7 @@ def checkout(skus):
                    "Y":10, "Z":50}
     dict_deals = {"A":2, "B":1, "C":0, "D":0, "E":4, "F":4,
                    "G":0, "H":2, "I":0, "J":0, "K":1, "L":0,
-                   "M":0, "N":4, "O":0, "P":1, "Q":1, "R":4,
+                   "M":4, "N":4, "O":0, "P":1, "Q":1, "R":4,
                    "S":0, "T":0, "U":4, "V":2, "W":0, "X":0,
                    "Y":0, "Z":0}
     try:
@@ -80,4 +85,5 @@ def checkout(skus):
             return 0
     except:
         return -1
+
 
