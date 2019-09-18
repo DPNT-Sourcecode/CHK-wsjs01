@@ -33,10 +33,10 @@ from collections import Counter
 
 def checkout(skus):
     dict_prices = {"A":50, "B":30, "C":20, "D":15, "E":40, "F":10,
-                   "G":20, "H":10, "I":35, "J":60, "K":80, "L":90,
+                   "G":20, "H":10, "I":35, "J":60, "K":70, "L":90,
                    "M":15, "N":40, "O":10, "P":50, "Q":30, "R":50,
-                   "S":30, "T":20, "U":40, "V":50, "W":20, "X":90,
-                   "Y":10, "Z":50}
+                   "S":20, "T":20, "U":40, "V":50, "W":20, "X":17,
+                   "Y":20, "Z":21}
     # dict_deal_map = {"A":2, "B":1, "C":0, "D":0, "E":4, "F":4,
     #                "G":0, "H":2, "I":0, "J":0, "K":1, "L":0,
     #                "M":4, "N":4, "O":0, "P":1, "Q":1, "R":4,
@@ -119,7 +119,7 @@ def checkout(skus):
                             prod_count = v
                             while (prod_count // 2) > 0:
                                 deal_count = prod_count//2
-                                deal_cost = deal_count * 150
+                                deal_cost = deal_count * 120
                                 total_costs.append(deal_cost)
                                 prod_count -= deal_count*2
                             total_costs.append(prod_count*dict_prices[k])
@@ -185,6 +185,11 @@ def checkout(skus):
                         else:
                             total_costs.append(v*dict_prices[k])
                     if bundle_bool:
+                        if sum(bundle_dict.values()) > 3:
+                            pass
+                        else:
+                            for k,v in bundle_dict.items():
+                                total_costs.append(k*v)
 
 
                     return sum(total_costs)
@@ -194,5 +199,6 @@ def checkout(skus):
             return 0
     except:
         return -1
+
 
 
