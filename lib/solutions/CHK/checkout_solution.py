@@ -1,4 +1,4 @@
-import collections import Counter
+from collections import Counter
 
 # noinspection PyUnusedLocal
 # skus = unicode string
@@ -11,5 +11,6 @@ def checkout(skus):
             return -1
     except:
         return -1
+
 
 
