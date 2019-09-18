@@ -3,7 +3,16 @@ from collections import Counter
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
-    dict_prices = {"A":50, "B": 30, "C":20, "D": 15, "E": 40, "F": 10}
+    dict_prices = {"A":50, "B":30, "C":20, "D":15, "E":40, "F":10,
+                   "G":20, "H":10, "I":35, "J":60, "K":80, "L":90,
+                   "M":15, "N":40, "O":10, "P":50, "Q":30, "R":50,
+                   "S":30, "T":20, "U":40, "V":50, "W":20, "X":90,
+                   "Y":10, "Z":50}
+    dict_deals = {"A":2, "B":1, "C":0, "D":0, "E":4, "F":4,
+                   "G":0, "H":2, "I":0, "J":0, "K":1, "L":0,
+                   "M":0, "N":4, "O":0, "P":1, "Q":1, "R":4,
+                   "S":0, "T":0, "U":4, "V":2, "W":0, "X":0,
+                   "Y":0, "Z":0}
     try:
         # If skus is not empty, if it is, return 0
         if skus:
@@ -32,12 +41,6 @@ def checkout(skus):
                                 deal_cost = deal_count * 130
                                 total_costs.append(deal_cost)
                                 prod_count -= deal_count*3
-
-                            total_costs.append(prod_count*dict_prices[k])
-                        # Incorporate special deals for E
-                        elif k=="E":
-                            prod_count = v
-                            free_B_items = prod_count // 2
                             total_costs.append(prod_count*dict_prices[k])
                         # Incorporate special deals for B
                         elif k=="B":
@@ -51,6 +54,11 @@ def checkout(skus):
                                 total_costs.append(deal_cost)
                                 prod_count -= deal_count*2
 
+                            total_costs.append(prod_count*dict_prices[k])
+                        # Incorporate special deals for E
+                        elif k=="E":
+                            prod_count = v
+                            free_B_items = prod_count // 2
                             total_costs.append(prod_count*dict_prices[k])
                         elif k=='F':
                             prod_count = v
@@ -72,3 +80,4 @@ def checkout(skus):
             return 0
     except:
         return -1
+
