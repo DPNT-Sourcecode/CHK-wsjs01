@@ -57,6 +57,7 @@ def checkout(skus):
                     dict_counts_rev = {k:dict_counts[k] for k in reverse_keys}
                     # Boolean for no s,t,x,y,z
                     bundle_bool = False
+                    bundle_dict = {}
                     # For every item in basket, calculate cost
                     for k,v in dict_counts_rev.items():
                         # Incorporate special deals for A
@@ -179,10 +180,13 @@ def checkout(skus):
                                 prod_count -= deal_count*2
                             total_costs.append(prod_count*dict_prices[k])
                         elif (k=="S")|(k=="T")|(k=="X")|(k=="Y")|(k=="Z"):
-                            s_items=
+                            bundle_dict.update({k:v})
                         # Every other item
                         else:
                             total_costs.append(v*dict_prices[k])
+                    if bundle_bool:
+
+
                     return sum(total_costs)
             else:
                 return -1
@@ -190,4 +194,5 @@ def checkout(skus):
             return 0
     except:
         return -1
+
 
