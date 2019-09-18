@@ -3,7 +3,7 @@ from collections import Counter
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
-    dict_prices = {"A":50, "B": 30, "C":20, "D": 15, "E": 40}
+    dict_prices = {"A":50, "B": 30, "C":20, "D": 15, "E": 40, "F": 10}
     try:
         # If skus is not empty, if it is, return 0
         if skus:
@@ -62,3 +62,4 @@ def checkout(skus):
             return 0
     except:
         return -1
+
