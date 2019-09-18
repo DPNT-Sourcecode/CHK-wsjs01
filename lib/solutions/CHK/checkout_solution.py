@@ -89,7 +89,19 @@ def checkout(skus):
                                     free_items += 1
                             item_count = v-free_items
                             total_costs.append(item_count*dict_prices[k])
-
+                        elif k=="H":
+                            prod_count = v
+                            while (prod_count // 10) > 0:
+                                superdeal_count = prod_count//10
+                                superdeal_cost = superdeal_count * 80
+                                total_costs.append(superdeal_cost)
+                                prod_count -= superdeal_count*10
+                            while (prod_count // 5) > 0:
+                                deal_count = prod_count//5
+                                deal_cost = deal_count * 45
+                                total_costs.append(deal_cost)
+                                prod_count -= deal_count*5
+                            total_costs.append(prod_count*dict_prices[k])
                         # Every other item
                         else:
                             total_costs.append(v*dict_prices[k])
@@ -100,6 +112,7 @@ def checkout(skus):
             return 0
     except:
         return -1
+
 
 
 
