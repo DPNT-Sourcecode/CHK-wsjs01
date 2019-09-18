@@ -55,6 +55,8 @@ def checkout(skus):
                     # Reverse keys to get to E items before Bs
                     reverse_keys = reversed(sorted(dict_counts.keys()))
                     dict_counts_rev = {k:dict_counts[k] for k in reverse_keys}
+                    # Boolean for no s,t,x,y,z
+                    bundle_bool = False
                     # For every item in basket, calculate cost
                     for k,v in dict_counts_rev.items():
                         # Incorporate special deals for A
@@ -176,6 +178,8 @@ def checkout(skus):
                                 total_costs.append(deal_cost)
                                 prod_count -= deal_count*2
                             total_costs.append(prod_count*dict_prices[k])
+                        elif (k=="S")|(k=="T")|(k=="X")|(k=="Y")|(k=="Z"):
+                            s_items=
                         # Every other item
                         else:
                             total_costs.append(v*dict_prices[k])
@@ -186,3 +190,4 @@ def checkout(skus):
             return 0
     except:
         return -1
+
