@@ -201,8 +201,23 @@ def checkout(skus):
                             left_over = total_items-(bundled_items)
                             # If items are a multiple of 3, no need to calculate costs of bundle
                             if left_over > 0:
-                                
-
+                                # Take away most expensive items with bundle deal
+                                for k in bundle_sorted.keys():
+                                    # If k is not in bundle_dict (no items in cart)
+                                    try:
+                                        while (bundled_items > 0) & (bundle_dict[k]>0):
+                                            bundled_items -= 1
+                                            bundle_dict[k] -= 1
+                                    except:
+                                        pass
+                                # Calculate prices for left over items after deal
+                                for k in bundle_sorted.keys():
+                                    try:
+                                        while (left_over > 0) & (bundle_dict[k]>0):
+                                            total_costs.append(bundle_sorted[k])
+                                            # Decrease amt of k items
+                                            left_over -= 1
+                                            bundle_dict[k] -= 1
                     return sum(total_costs)
             else:
                 return -1
@@ -210,5 +225,6 @@ def checkout(skus):
             return 0
     except:
         return -1
+
 
 
