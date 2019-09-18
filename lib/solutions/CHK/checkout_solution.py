@@ -2,7 +2,7 @@ from collections import Counter
 
 # noinspection PyUnusedLocal
 # skus = unicode string
-def deal(original_price, multiplier, deal_price):
+def deal(prod_count, og_price, deal_mult, deal_price):
 
     return list_costs
 def superdeal(prod_count, og_price, deal_mult, deal_price, super_mult, super_price):
@@ -16,7 +16,7 @@ def superdeal(prod_count, og_price, deal_mult, deal_price, super_mult, super_pri
     while (prod_count // deal_mult) > 0:
         deal_count = prod_count//deal_mult
         deal_cost = deal_count * deal_price
-        total_costs.append(deal_cost)
+        costs.append(deal_cost)
         prod_count -= deal_count*deal_mult
     costs.append(prod_count*dict_prices[k])
     return list_costs
@@ -27,7 +27,7 @@ def checkout(skus):
                    "M":15, "N":40, "O":10, "P":50, "Q":30, "R":50,
                    "S":30, "T":20, "U":40, "V":50, "W":20, "X":90,
                    "Y":10, "Z":50}
-    dict_deals = {"A":2, "B":1, "C":0, "D":0, "E":4, "F":4,
+    dict_deal_map = {"A":2, "B":1, "C":0, "D":0, "E":4, "F":4,
                    "G":0, "H":2, "I":0, "J":0, "K":1, "L":0,
                    "M":4, "N":4, "O":0, "P":1, "Q":1, "R":4,
                    "S":0, "T":0, "U":4, "V":2, "W":0, "X":0,
@@ -100,6 +100,7 @@ def checkout(skus):
             return 0
     except:
         return -1
+
 
 
 
