@@ -199,6 +199,3 @@ def checkout(skus):
             return 0
     except:
         return -1
-
-
-
