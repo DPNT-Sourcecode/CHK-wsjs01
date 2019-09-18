@@ -37,16 +37,14 @@ def checkout(skus):
                         # Incorporate special deals for E
                         elif k=="E":
                             prod_count = v
-                            free_items = 0
-                            if prod_count > 2:
-                                if prod_count % 3 == 0:
-                                    free_B_items = prod_count // 2
-                                else:
-                                    free_B_items = prod_count % 3
+                            free_B_items = prod_count // 2
                             total_costs.append(prod_count*dict_prices[k])
                         # Incorporate special deals for B
                         elif k=="B":
-                            prod_count = v-free_B_items
+                            try:
+                                prod_count = v-free_B_items
+                            except:
+                                prod_count = v
                             while (prod_count // 2) > 0:
                                 deal_count = prod_count//2
                                 deal_cost = deal_count * 45
@@ -64,6 +62,7 @@ def checkout(skus):
             return 0
     except:
         return -1
+
 
 
 
