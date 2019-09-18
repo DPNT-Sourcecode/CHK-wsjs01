@@ -180,6 +180,7 @@ def checkout(skus):
                                 prod_count -= deal_count*2
                             total_costs.append(prod_count*dict_prices[k])
                         elif (k=="S")|(k=="T")|(k=="X")|(k=="Y")|(k=="Z"):
+                            bundle_bool=True
                             bundle_dict.update({k:v})
                         # Every other item
                         else:
@@ -218,13 +219,17 @@ def checkout(skus):
                                             # Decrease amt of k items
                                             left_over -= 1
                                             bundle_dict[k] -= 1
-                return sum(total_costs)
+                                    # If no amount of letter in bundle offer
+                                    except:
+                                        pass
+                    return sum(total_costs)
             else:
                 return -1
         else:
             return 0
     except:
         return -1
+
 
 
 
