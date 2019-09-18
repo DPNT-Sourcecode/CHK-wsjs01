@@ -3,8 +3,22 @@ from collections import Counter
 # noinspection PyUnusedLocal
 # skus = unicode string
 def deal(original_price, multiplier, deal_price):
+
     return list_costs
-def superdeal(original_price, deal_mult, deal_price, super_mult, super_price):
+def superdeal(prod_count, og_price, deal_mult, deal_price, super_mult, super_price):
+    costs=[]
+    prod_count = v
+    while (prod_count // super_mult) > 0:
+        superdeal_count = prod_count//super_mult
+        superdeal_cost = superdeal_count * super_price
+        costs.append(superdeal_cost)
+        prod_count -= superdeal_count*super_mult
+    while (prod_count // deal_mult) > 0:
+        deal_count = prod_count//deal_mult
+        deal_cost = deal_count * deal_price
+        total_costs.append(deal_cost)
+        prod_count -= deal_count*deal_mult
+    costs.append(prod_count*dict_prices[k])
     return list_costs
 
 def checkout(skus):
@@ -75,6 +89,7 @@ def checkout(skus):
                                     free_items += 1
                             item_count = v-free_items
                             total_costs.append(item_count*dict_prices[k])
+
                         # Every other item
                         else:
                             total_costs.append(v*dict_prices[k])
@@ -85,5 +100,6 @@ def checkout(skus):
             return 0
     except:
         return -1
+
 
 
