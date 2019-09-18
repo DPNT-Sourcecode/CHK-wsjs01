@@ -3,7 +3,7 @@ from collections import Counter
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
-    dict_prices = {"A":50, "B": 30, "C":20, "D": 15}
+    dict_prices = {"A":50, "B": 30, "C":20, "D": 15, "E": 40}
     try:
         # If skus is not empty, if it is, return 0
         if skus:
@@ -18,11 +18,15 @@ def checkout(skus):
                     for k,v in dict_counts.items():
                         # Incorporate special deals for A
                         if k=="A":
-                            deal_count = v//3
+                            superdeal_count = v//5
+                            superdeal_cost = superdeal_count * 200
+                            total_costs.append(superdeal_cost)
+
+                            deal_count = v-(superdeal_count*5)//3
                             deal_cost = deal_count * 130
                             total_costs.append(deal_cost)
 
-                            non_deal_count = v-(deal_count*3)
+                            non_deal_count = v-((superdeal_count*5)+(deal_count*3))
                             total_costs.append(non_deal_count*dict_prices[k])
                         # Incorporate special deals for B
                         elif k=="B":
@@ -42,3 +46,4 @@ def checkout(skus):
             return 0
     except:
         return -1
+
