@@ -14,6 +14,7 @@ def checkout(skus):
                 # If basket is not empty calculate costs
                 if len(list_skus)>0:
                     dict_counts = Counter(list_skus)
+                    # Reverse keys to get to E items before Bs
                     reverse_keys = reversed(sorted(dict_counts.keys()))
                     dict_counts_rev = {k:dict_counts[k] for k in reverse_keys}
                     # For every item in basket, calculate cost
@@ -63,6 +64,7 @@ def checkout(skus):
             return 0
     except:
         return -1
+
 
 
 
