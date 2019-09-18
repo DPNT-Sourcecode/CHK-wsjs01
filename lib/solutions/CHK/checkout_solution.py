@@ -26,7 +26,7 @@ def checkout(skus):
                                 prod_count -= superdeal_count*5
                             while (prod_count // 3) > 0:
                                 deal_count = prod_count//3
-                                deal_cost = superdeal_count * 130
+                                deal_cost = deal_count * 130
                                 total_costs.append(deal_cost)
                                 prod_count -= deal_count*3
 
@@ -61,5 +61,6 @@ def checkout(skus):
             return 0
     except:
         return -1
+
 
 
