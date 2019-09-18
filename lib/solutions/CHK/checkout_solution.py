@@ -218,13 +218,14 @@ def checkout(skus):
                                             # Decrease amt of k items
                                             left_over -= 1
                                             bundle_dict[k] -= 1
-                    return sum(total_costs)
+                return sum(total_costs)
             else:
                 return -1
         else:
             return 0
     except:
         return -1
+
 
 
 
