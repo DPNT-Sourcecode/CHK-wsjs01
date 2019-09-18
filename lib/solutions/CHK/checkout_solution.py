@@ -185,11 +185,21 @@ def checkout(skus):
                         else:
                             total_costs.append(v*dict_prices[k])
                     if bundle_bool:
-                        if sum(bundle_dict.values()) > 3:
-                            pass
-                        else:
+                        total_items = sum(bundle_dict.values())
+                        if total_items < 3:
                             for k,v in bundle_dict.items():
                                 total_costs.append(k*v)
+                        else:
+                            bundle_prices = {k:v for k, v in dict_prices.items() if k in ('S', 'T', 'X', 'Y', 'Z')}
+                            bundle_sorted = dict(sorted(bundle_prices.items(),
+                                                        key=lambda x: x[1],
+                                                        reverse=True))
+                            total_items = sum(bundle_dict.values())
+                            if total_items > 3:
+                                bundles = total_items // 3
+                            else:
+                                for k,v in bundle
+
 
 
                     return sum(total_costs)
@@ -199,3 +209,4 @@ def checkout(skus):
             return 0
     except:
         return -1
+
