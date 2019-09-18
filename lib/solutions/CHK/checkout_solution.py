@@ -120,6 +120,39 @@ def checkout(skus):
                             prod_count = v
                             free_M_items = prod_count // 3
                             total_costs.append(prod_count*dict_prices[k])
+                        elif k=="P":
+                            prod_count = v
+                            while (prod_count // 5) > 0:
+                                deal_count = prod_count//5
+                                deal_cost = deal_count * 200
+                                total_costs.append(deal_cost)
+                                prod_count -= deal_count*5
+                            total_costs.append(prod_count*dict_prices[k])
+                        elif k=="Q":
+                            try:
+                                prod_count = v-free_Q_items
+                            except:
+                                prod_count = v
+                            while (prod_count // 3) > 0:
+                                deal_count = prod_count//3
+                                deal_cost = deal_count * 80
+                                total_costs.append(deal_cost)
+                                prod_count -= deal_count*3
+                            total_costs.append(prod_count*dict_prices[k])
+                        elif k=="R":
+                            prod_count = v
+                            free_Q_items = prod_count // 3
+                            total_costs.append(prod_count*dict_prices[k])
+                        elif k=='F':
+                            prod_count = v
+                            free_items = 0
+                            while prod_count > 0:
+                                prod_count -= 2
+                                if prod_count > 0:
+                                    prod_count -= 1
+                                    free_items += 1
+                            item_count = v-free_items
+                            total_costs.append(item_count*dict_prices[k])                                                                                                                
                         # Every other item
                         else:
                             total_costs.append(v*dict_prices[k])
@@ -130,6 +163,7 @@ def checkout(skus):
             return 0
     except:
         return -1
+
 
 
 
