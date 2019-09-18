@@ -56,10 +56,9 @@ def checkout(skus):
                             prod_count = v
                             free_items = 0
                             if prod_count > 2:
-                                if prod_count % 3 == 0:
-                                    free_items = prod_count // 2
-                                else:
-                                    free_items = prod_count % 3
+                                free_items = prod_count // 2
+                                if (prod_count%2) == 0:
+                                    free_items = free_items-1
                             prod_count = prod_count-free_items
                             total_costs.append(prod_count*dict_prices[k])
                         # Every other item
@@ -72,5 +71,6 @@ def checkout(skus):
             return 0
     except:
         return -1
+
 
 
