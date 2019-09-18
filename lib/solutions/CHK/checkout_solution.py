@@ -15,9 +15,9 @@ def checkout(skus):
                 if len(list_skus)>0:
                     dict_counts = Counter(list_skus)
                     reverse_keys = reversed(sorted(dict_counts.keys()))
-                    dict_counts_rev = {k,v for k,v in reverse_keys}
+                    dict_counts_rev = {k:dict_counts[k] for k in reverse_keys}
                     # For every item in basket, calculate cost
-                    for k,v in dict_counts.items():
+                    for k,v in dict_counts_rev.items():
                         # Incorporate special deals for A
                         if k=="A":
                             prod_count = v
@@ -63,6 +63,7 @@ def checkout(skus):
             return 0
     except:
         return -1
+
 
 
 
